@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read customer reviews and share your feedback">
+    <title>Customer Reviews | Gift Customization Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-top">
+            <div class="container">
+                <span>🎁 Free Delivery on Orders Above ₹500 | Secure Packaging with Thermocol</span>
+            </div>
+        </div>
+        
+        <div class="navbar-main">
+            <div class="container navbar-container">
+                <a href="index.html" class="logo">
+                    <img src="logo.jpeg" alt="GiftShop Logo" class="logo-img">
+                </a>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for gifts, frames, mugs, t-shirts...">
+                    <button type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="products.html" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Products</span>
+                    </a>
+                    <a href="cart.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Cart</span>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-phone"></i>
+                        <span>Contact</span>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="navbar-bottom">
+            <div class="container">
+                <div class="nav-menu">
+                    <div class="nav-menu-item">
+                        <a href="index.html" class="nav-menu-link">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html" class="nav-menu-link">
+                            <i class="fas fa-box"></i> All Products
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html?category=frames" class="nav-menu-link">
+                            <i class="fas fa-image"></i> Photo Frames
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html?category=mugs" class="nav-menu-link">
+                            <i class="fas fa-mug-hot"></i> Photo Mugs
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html?category=tshirts" class="nav-menu-link">
+                            <i class="fas fa-tshirt"></i> T-Shirts
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html?category=keychains" class="nav-menu-link">
+                            <i class="fas fa-key"></i> Keychains
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="feedback.html" class="nav-menu-link active">
+                            <i class="fas fa-star"></i> Reviews
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="products.html" class="mobile-nav-link">
+            <i class="fas fa-th-large"></i> Products
+        </a>
+        <a href="products.html?category=frames" class="mobile-nav-link">
+            <i class="fas fa-image"></i> Photo Frames
+        </a>
+        <a href="products.html?category=mugs" class="mobile-nav-link">
+            <i class="fas fa-mug-hot"></i> Photo Mugs
+        </a>
+        <a href="products.html?category=tshirts" class="mobile-nav-link">
+            <i class="fas fa-tshirt"></i> T-Shirts
+        </a>
+        <a href="products.html?category=keychains" class="mobile-nav-link">
+            <i class="fas fa-key"></i> Keychains
+        </a>
+        <a href="cart.html" class="mobile-nav-link">
+            <i class="fas fa-shopping-cart"></i> Cart
+        </a>
+        <a href="feedback.html" class="mobile-nav-link">
+            <i class="fas fa-star"></i> Reviews
+        </a>
+        <a href="contact.html" class="mobile-nav-link">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container page-header-content">
+            <h1>Customer Reviews</h1>
+            <p>See what our customers say about us</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <span>Reviews</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Section -->
+    <section class="feedback-page">
+        <div class="container">
+            <div class="feedback-grid">
+                <!-- Feedback Form -->
+                <div class="feedback-form-section">
+                    <h3>
+                        <i class="fas fa-pen" style="color: var(--primary-color); margin-right: 10px;"></i>
+                        Share Your Feedback
+                    </h3>
+                    
+                    <form id="feedback-form">
+                        <div class="form-group">
+                            <label for="feedback-name">Your Name *</label>
+                            <input type="text" id="feedback-name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="feedback-email">Email (Optional)</label>
+                            <input type="email" id="feedback-email" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Your Rating *</label>
+                            <div class="rating-input">
+                                <span class="rating-star" data-rating="1">★</span>
+                                <span class="rating-star" data-rating="2">★</span>
+                                <span class="rating-star" data-rating="3">★</span>
+                                <span class="rating-star" data-rating="4">★</span>
+                                <span class="rating-star" data-rating="5">★</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="feedback-product">Product Purchased (Optional)</label>
+                            <select id="feedback-product">
+                                <option value="">Select a product (optional)</option>
+                                <option value="Photo Frame">Photo Frame</option>
+                                <option value="Photo Mug">Photo Mug</option>
+                                <option value="Custom T-Shirt">Custom T-Shirt</option>
+                                <option value="Photo Keychain">Photo Keychain</option>
+                                <option value="Flex Banner">Flex Banner</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="feedback-message">Your Review *</label>
+                            <textarea id="feedback-message" rows="5" placeholder="Share your experience with us..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">
+                            <i class="fas fa-paper-plane"></i> Submit Review
+                        </button>
+                    </form>
+
+                    <!-- Review Guidelines -->
+                    <div style="margin-top: 30px; padding: 20px; background: var(--off-white); border-radius: var(--radius-lg);">
+                        <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 12px; color: var(--dark-color);">
+                            <i class="fas fa-info-circle" style="color: var(--secondary-color); margin-right: 8px;"></i>
+                            Review Guidelines
+                        </h4>
+                        <ul style="font-size: 0.85rem; color: var(--gray-dark); line-height: 1.8; padding-left: 20px;">
+                            <li>Be honest and share your genuine experience</li>
+                            <li>Mention both positive and negative aspects</li>
+                            <li>Include details about product quality and service</li>
+                            <li>Keep it respectful and professional</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Reviews Section -->
+                <div class="reviews-section">
+                    <h3>
+                        <i class="fas fa-star" style="color: var(--accent-yellow); margin-right: 10px;"></i>
+                        Customer Reviews
+                    </h3>
+                    
+                    <!-- Rating Summary -->
+                    <div style="background: var(--white-color); border-radius: var(--radius-xl); padding: 25px; margin-bottom: 30px; box-shadow: var(--shadow-sm);">
+                        <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 3rem; font-weight: 700; color: var(--dark-color);">4.7</div>
+                                <div style="display: flex; gap: 3px; justify-content: center; margin: 8px 0;">
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star empty">★</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--gray-dark);">Based on 1,267 reviews</p>
+                            </div>
+                            
+                            <div style="flex: 1; min-width: 200px;">
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark); width: 50px;">5★</span>
+                                    <div style="flex: 1; height: 8px; background: var(--gray-light); border-radius: 4px; overflow: hidden;">
+                                        <div style="width: 78%; height: 100%; background: var(--accent-yellow);"></div>
+                                    </div>
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark);">78%</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark); width: 50px;">4★</span>
+                                    <div style="flex: 1; height: 8px; background: var(--gray-light); border-radius: 4px; overflow: hidden;">
+                                        <div style="width: 15%; height: 100%; background: var(--accent-yellow);"></div>
+                                    </div>
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark);">15%</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark); width: 50px;">3★</span>
+                                    <div style="flex: 1; height: 8px; background: var(--gray-light); border-radius: 4px; overflow: hidden;">
+                                        <div style="width: 5%; height: 100%; background: var(--accent-yellow);"></div>
+                                    </div>
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark);">5%</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark); width: 50px;">2★</span>
+                                    <div style="flex: 1; height: 8px; background: var(--gray-light); border-radius: 4px; overflow: hidden;">
+                                        <div style="width: 1%; height: 100%; background: var(--accent-yellow);"></div>
+                                    </div>
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark);">1%</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark); width: 50px;">1★</span>
+                                    <div style="flex: 1; height: 8px; background: var(--gray-light); border-radius: 4px; overflow: hidden;">
+                                        <div style="width: 1%; height: 100%; background: var(--accent-yellow);"></div>
+                                    </div>
+                                    <span style="font-size: 0.85rem; color: var(--gray-dark);">1%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Grid -->
+                    <div class="reviews-grid" id="reviews-grid">
+                        <!-- Reviews will be loaded via JavaScript -->
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-arrow-down"></i> Load More Reviews
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Share Experience Banner -->
+    <section style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-pink) 100%); padding: 60px 0;">
+        <div class="container" style="text-align: center;">
+            <h2 style="font-size: 2rem; font-weight: 700; color: var(--white-color); margin-bottom: 15px;">
+                Love Our Products?
+            </h2>
+            <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 30px;">
+                Share your experience and help others discover quality custom gifts
+            </p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="products.html" class="btn btn-dark btn-lg">
+                    <i class="fas fa-shopping-bag"></i> Shop Now
+                </a>
+                <a href="https://wa.me/919047408078" class="btn btn-outline btn-lg" style="border-color: white; color: white;">
+                    <i class="fab fa-whatsapp"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="logo.jpeg" alt="GiftShop Logo" class="footer-logo-img">
+                    </div>
+                    <p>Your one-stop shop for personalized gifts and custom products. We transform your precious memories into beautiful keepsakes.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919047408078" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a>
+                        <a href="products.html" class="footer-link"><i class="fas fa-chevron-right"></i> Products</a>
+                        <a href="cart.html" class="footer-link"><i class="fas fa-chevron-right"></i> Cart</a>
+                        <a href="checkout.html" class="footer-link"><i class="fas fa-chevron-right"></i> Checkout</a>
+                        <a href="feedback.html" class="footer-link"><i class="fas fa-chevron-right"></i> Reviews</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <div class="footer-links">
+                        <a href="products.html?category=frames" class="footer-link"><i class="fas fa-chevron-right"></i> Photo Frames</a>
+                        <a href="products.html?category=mugs" class="footer-link"><i class="fas fa-chevron-right"></i> Photo Mugs</a>
+                        <a href="products.html?category=tshirts" class="footer-link"><i class="fas fa-chevron-right"></i> T-Shirts</a>
+                        <a href="products.html?category=keychains" class="footer-link"><i class="fas fa-chevron-right"></i> Keychains</a>
+                        <a href="products.html?category=banners" class="footer-link"><i class="fas fa-chevron-right"></i> Banners</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Serapattu Main Road, Pudupattu (Post), Vanapuram (TK), Kallakurichi (DT), Tamil Nadu - 606402</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+91 9047408078</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Mon - Sat: 9:00 AM - 8:00 PM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gift Customization Shop. All Rights Reserved.</p>
+                <div class="footer-payment">
+                    <span>Payment Methods:</span>
+                    <div class="payment-icons">
+                        <div class="payment-icon" style="color: #4285F4;"><i class="fab fa-google-pay"></i></div>
+                        <div class="payment-icon" style="color: #6C63FF;"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="payment-icon" style="color: #FF6B6B;"><i class="fas fa-credit-card"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

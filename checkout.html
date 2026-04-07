@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your order securely">
+    <title>Checkout | Gift Customization Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-top">
+            <div class="container">
+                <span>🎁 Free Delivery on Orders Above ₹500 | Secure Packaging with Thermocol</span>
+            </div>
+        </div>
+        
+        <div class="navbar-main">
+            <div class="container navbar-container">
+                <a href="index.html" class="logo">
+                    <img src="logo.jpeg" alt="GiftShop Logo" class="logo-img">
+                </a>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for gifts, frames, mugs, t-shirts...">
+                    <button type="button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-actions">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="products.html" class="nav-link">
+                        <i class="fas fa-th-large"></i>
+                        <span>Products</span>
+                    </a>
+                    <a href="cart.html" class="nav-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Cart</span>
+                        <span class="cart-count">0</span>
+                    </a>
+                    <a href="contact.html" class="nav-link">
+                        <i class="fas fa-phone"></i>
+                        <span>Contact</span>
+                    </a>
+                </div>
+                
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="navbar-bottom">
+            <div class="container">
+                <div class="nav-menu">
+                    <div class="nav-menu-item">
+                        <a href="index.html" class="nav-menu-link">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html" class="nav-menu-link">
+                            <i class="fas fa-box"></i> All Products
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html?category=frames" class="nav-menu-link">
+                            <i class="fas fa-image"></i> Photo Frames
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html?category=mugs" class="nav-menu-link">
+                            <i class="fas fa-mug-hot"></i> Photo Mugs
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html?category=tshirts" class="nav-menu-link">
+                            <i class="fas fa-tshirt"></i> T-Shirts
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="products.html?category=keychains" class="nav-menu-link">
+                            <i class="fas fa-key"></i> Keychains
+                        </a>
+                    </div>
+                    <div class="nav-menu-item">
+                        <a href="feedback.html" class="nav-menu-link">
+                            <i class="fas fa-star"></i> Reviews
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <a href="index.html" class="mobile-nav-link">
+            <i class="fas fa-home"></i> Home
+        </a>
+        <a href="products.html" class="mobile-nav-link">
+            <i class="fas fa-th-large"></i> Products
+        </a>
+        <a href="cart.html" class="mobile-nav-link">
+            <i class="fas fa-shopping-cart"></i> Cart
+        </a>
+        <a href="feedback.html" class="mobile-nav-link">
+            <i class="fas fa-star"></i> Reviews
+        </a>
+        <a href="contact.html" class="mobile-nav-link">
+            <i class="fas fa-envelope"></i> Contact
+        </a>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container page-header-content">
+            <h1>Checkout</h1>
+            <p>Complete your order securely</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="cart.html">Cart</a>
+                <span>/</span>
+                <span>Checkout</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Section -->
+    <section class="checkout-page">
+        <div class="container">
+            <div id="order-success-banner" class="order-success-banner" style="display: none;">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="success-content">
+                    <p class="success-label">Payment Confirmed</p>
+                    <h3 id="order-success-title">Order placed successfully</h3>
+                    <p id="order-success-meta" class="success-meta"></p>
+                </div>
+                <a href="products.html" class="btn btn-outline btn-sm">Continue Shopping</a>
+            </div>
+
+            <div class="checkout-layout">
+                <!-- Checkout Form -->
+                <form class="checkout-form" id="checkout-form" onsubmit="processCheckout(event)">
+                    <!-- Customer Information -->
+                    <div class="checkout-section">
+                        <h3>
+                            <i class="fas fa-user"></i>
+                            Customer Information
+                        </h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="Enter 10-digit phone number" pattern="[0-9]{10}" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="email">Email Address (Optional)</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email address">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="address">Delivery Address *</label>
+                                <textarea id="address" name="address" rows="4" placeholder="Enter your complete delivery address including landmark" required></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City/Town *</label>
+                                <input type="text" id="city" name="city" placeholder="Enter city or town" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pincode">Pincode *</label>
+                                <input type="text" id="pincode" name="pincode" placeholder="Enter 6-digit pincode" pattern="[0-9]{6}" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="checkout-section">
+                        <h3>
+                            <i class="fas fa-credit-card"></i>
+                            Payment Method
+                        </h3>
+                        
+                        <div class="payment-options">
+                            <label class="payment-option selected">
+                                <input type="radio" name="payment" value="upi" checked>
+                                <div class="payment-option-content">
+                                    <div class="payment-radio"></div>
+                                    <div class="payment-icon-lg">
+                                        <i class="fab fa-google-pay"></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <h4>UPI / GPay / PhonePe</h4>
+                                        <p>Pay instantly using any UPI app</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="card">
+                                <div class="payment-option-content">
+                                    <div class="payment-radio"></div>
+                                    <div class="payment-icon-lg">
+                                        <i class="fas fa-credit-card"></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <h4>Credit / Debit Card</h4>
+                                        <p>Visa, Mastercard, RuPay & more</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cod">
+                                <div class="payment-option-content">
+                                    <div class="payment-radio"></div>
+                                    <div class="payment-icon-lg">
+                                        <i class="fas fa-money-bill-wave"></i>
+                                    </div>
+                                    <div class="payment-info">
+                                        <h4>Cash on Delivery</h4>
+                                        <p>Pay when you receive your order</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div id="upi-details" style="display: none; margin-top: 20px; padding: 20px; background: var(--off-white); border-radius: var(--radius-lg);">
+                            <h4 style="font-size: 1rem; margin-bottom: 15px; color: var(--dark-color);">
+                                <i class="fas fa-wallet" style="color: #FF6B6B; margin-right: 8px;"></i>
+                                Payment Information
+                            </h4>
+                            <p style="font-size: 0.9rem; color: var(--gray-dark); margin-bottom: 15px;">
+                                Complete your payment securely on this page using UPI, card, or cash on delivery. No WhatsApp redirection is required.
+                            </p>
+                            <div class="payment-detail-grid">
+                                <div class="payment-detail-card">
+                                    <label for="upi-id">UPI ID</label>
+                                    <input type="text" id="upi-id" name="upi-id" placeholder="name@bank">
+                                    <small>Use any UPI app (GPay/PhonePe/Paytm).</small>
+                                </div>
+                                <div class="payment-detail-card subtle">
+                                    <p style="margin: 0; font-weight: 600;">How it works</p>
+                                    <ul class="payment-steps">
+                                        <li>Enter your UPI ID and place the order.</li>
+                                        <li>We send a collect request to your UPI app.</li>
+                                        <li>Once you approve, the payment is marked as paid.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="card-details" class="payment-detail-panel" style="display: none;">
+                            <div class="payment-detail-grid">
+                                <div class="payment-detail-card">
+                                    <label for="card-number">Card Number</label>
+                                    <input type="text" id="card-number" inputmode="numeric" maxlength="19" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="payment-detail-card split">
+                                    <div>
+                                        <label for="card-expiry">Expiry (MM/YY)</label>
+                                        <input type="text" id="card-expiry" inputmode="numeric" maxlength="5" placeholder="09/29">
+                                    </div>
+                                    <div>
+                                        <label for="card-cvv">CVV</label>
+                                        <input type="password" id="card-cvv" inputmode="numeric" maxlength="4" placeholder="***">
+                                    </div>
+                                </div>
+                                <div class="payment-detail-card">
+                                    <label for="card-name">Name on Card</label>
+                                    <input type="text" id="card-name" placeholder="As printed on the card">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cod-details" class="payment-detail-panel" style="display: none;">
+                            <div class="payment-detail-card">
+                                <p style="margin: 0; font-weight: 600;">Cash on Delivery</p>
+                                <p style="margin: 6px 0 0; color: var(--gray-dark); font-size: 0.9rem;">Keep exact change ready. Our delivery partner will collect the amount upon delivery.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Notes -->
+                    <div class="checkout-section">
+                        <h3>
+                            <i class="fas fa-sticky-note"></i>
+                            Order Notes (Optional)
+                        </h3>
+                        
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="notes">Special Instructions</label>
+                                <textarea id="notes" name="notes" rows="3" placeholder="Any special instructions for your order?"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-success btn-lg btn-block">
+                        <i class="fas fa-check-circle"></i> Pay ₹<span id="payable-amount">0</span> & Place Order
+                    </button>
+                    
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: var(--gray-dark);">
+                        <i class="fas fa-shield-alt" style="color: #26DE81;"></i> Secure Payment | 100% Safe Transaction
+                    </p>
+                </form>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h3>
+                        <i class="fas fa-shopping-bag"></i>
+                        Order Summary
+                    </h3>
+                    
+                    <div class="order-items" id="order-items">
+                        <!-- Order items will be loaded via JavaScript -->
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="checkout-subtotal">₹0</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Delivery</span>
+                        <span id="checkout-delivery">FREE</span>
+                    </div>
+                    
+                    <div class="summary-row discount">
+                        <span>Savings</span>
+                        <span id="checkout-savings">-₹0</span>
+                    </div>
+                    
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span id="checkout-total">₹0</span>
+                    </div>
+
+                    <!-- Delivery Info -->
+                    <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--gray-light);">
+                        <h4 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 15px; color: var(--dark-color);">
+                            <i class="fas fa-truck" style="color: var(--secondary-color); margin-right: 8px;"></i>
+                            Delivery Information
+                        </h4>
+                        
+                        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px;">
+                            <i class="fas fa-check-circle" style="color: var(--accent-green); margin-top: 3px;"></i>
+                            <span style="font-size: 0.85rem; color: var(--gray-dark);">Free delivery across Tamil Nadu</span>
+                        </div>
+                        
+                        <div style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px;">
+                            <i class="fas fa-check-circle" style="color: var(--accent-green); margin-top: 3px;"></i>
+                            <span style="font-size: 0.85rem; color: var(--gray-dark);">Delivery in 3-5 business days</span>
+                        </div>
+                        
+                        <div style="display: flex; align-items: flex-start; gap: 10px;">
+                            <i class="fas fa-check-circle" style="color: var(--accent-green); margin-top: 3px;"></i>
+                            <span style="font-size: 0.85rem; color: var(--gray-dark);">Secure thermocol packaging</span>
+                        </div>
+                    </div>
+
+                    <!-- Trust Badges -->
+                    <div style="margin-top: 20px; padding: 15px; background: var(--off-white); border-radius: var(--radius-lg);">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                            <i class="fas fa-exchange-alt" style="color: var(--accent-orange);"></i>
+                            <span style="font-size: 0.8rem; color: var(--gray-dark);">Free replacement for damaged products</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                            <span style="font-size: 0.8rem; color: var(--gray-dark);">Need help? +91 9047408078</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="logo.jpeg" alt="GiftShop Logo" class="footer-logo-img">
+                    </div>
+                    <p>Your one-stop shop for personalized gifts and custom products.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919047408078" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="index.html" class="footer-link"><i class="fas fa-chevron-right"></i> Home</a>
+                        <a href="products.html" class="footer-link"><i class="fas fa-chevron-right"></i> Products</a>
+                        <a href="cart.html" class="footer-link"><i class="fas fa-chevron-right"></i> Cart</a>
+                        <a href="checkout.html" class="footer-link"><i class="fas fa-chevron-right"></i> Checkout</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Contact Us</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Serapattu Main Road, Pudupattu, Vanapuram (TK), Kallakurichi (DT), Tamil Nadu - 606402</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+91 9047408078</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gift Customization Shop. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    
+    <script>
+        // Load order items on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadOrderSummary();
+            setupPaymentOptions();
+            showOrderSuccessBanner();
+        });
+        
+        // Load order summary
+        function loadOrderSummary() {
+            const orderItemsContainer = document.getElementById('order-items');
+            const items = cart.getItems();
+            
+            if (items.length === 0) {
+                orderItemsContainer.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <i class="fas fa-shopping-cart" style="font-size: 3rem; color: var(--gray-light); margin-bottom: 15px;"></i>
+                        <p style="color: var(--gray-dark);">Your cart is empty</p>
+                        <a href="products.html" class="btn btn-primary btn-sm" style="margin-top: 15px;">Start Shopping</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            orderItemsContainer.innerHTML = items.map(item => `
+                <div class="order-item">
+                    <div class="order-item-image">
+                        <img src="${item.image}" alt="${item.name}">
+                    </div>
+                    <div class="order-item-info">
+                        <h4>${item.name}</h4>
+                        <p>Qty: ${item.quantity}</p>
+                        ${Object.keys(item.options).length > 0 ? 
+                            `<p style="font-size: 0.75rem; color: var(--gray-dark);">${Object.values(item.options).join(', ')}</p>` : ''}
+                    </div>
+                    <div class="order-item-price">₹${item.price * item.quantity}</div>
+                </div>
+            `).join('');
+            
+            // Update totals
+            const totals = cart.getTotal();
+            document.getElementById('checkout-subtotal').textContent = `₹${totals.subtotal}`;
+            document.getElementById('checkout-delivery').textContent = totals.delivery === 0 ? 'FREE' : `₹${totals.delivery}`;
+            document.getElementById('checkout-total').textContent = `₹${totals.total}`;
+            const payable = document.getElementById('payable-amount');
+            if (payable) payable.textContent = totals.total;
+            
+            // Calculate savings
+            const originalTotal = items.reduce((sum, item) => {
+                const product = productsData.find(p => p.id === item.id);
+                return sum + (product ? product.originalPrice * item.quantity : 0);
+            }, 0);
+            document.getElementById('checkout-savings').textContent = `-₹${originalTotal - totals.subtotal}`;
+        }
+        
+        // Setup payment options
+        function setupPaymentOptions() {
+            const paymentOptions = document.querySelectorAll('.payment-option input');
+            const upiDetails = document.getElementById('upi-details');
+            const cardDetails = document.getElementById('card-details');
+            const codDetails = document.getElementById('cod-details');
+            
+            paymentOptions.forEach(option => {
+                option.addEventListener('change', () => {
+                    // Update visual selection
+                    document.querySelectorAll('.payment-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    option.closest('.payment-option').classList.add('selected');
+                    
+                    // Show/hide payment detail panels
+                    const value = option.value;
+                    if (upiDetails) upiDetails.style.display = value === 'upi' ? 'block' : 'none';
+                    if (cardDetails) cardDetails.style.display = value === 'card' ? 'block' : 'none';
+                    if (codDetails) codDetails.style.display = value === 'cod' ? 'block' : 'none';
+                });
+            });
+
+            // Initialize visibility based on default selection
+            const checked = document.querySelector('.payment-option input:checked');
+            if (checked) {
+                const value = checked.value;
+                if (upiDetails) upiDetails.style.display = value === 'upi' ? 'block' : 'none';
+                if (cardDetails) cardDetails.style.display = value === 'card' ? 'block' : 'none';
+                if (codDetails) codDetails.style.display = value === 'cod' ? 'block' : 'none';
+            }
+        }
+
+        function showOrderSuccessBanner() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('order') !== 'success') return;
+
+            const banner = document.getElementById('order-success-banner');
+            if (!banner) return;
+
+            const orderId = params.get('orderId') || sessionStorage.getItem('latestOrderId') || 'ORD-LATEST';
+            const amount = sessionStorage.getItem('latestOrderTotal') || document.getElementById('checkout-total')?.textContent || '';
+            const paymentStatus = sessionStorage.getItem('latestPaymentStatus') || 'Paid';
+
+            document.getElementById('order-success-title').textContent = `Order ${orderId} placed successfully`;
+            document.getElementById('order-success-meta').textContent = `Status: ${paymentStatus} · Amount: ${amount}`;
+
+            banner.style.display = 'flex';
+            cart.showToast('success', 'Payment Successful', `Order ${orderId} confirmed`);
+
+            params.delete('order');
+            params.delete('orderId');
+            const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+            history.replaceState({}, document.title, newUrl);
+        }
+    </script>
+</body>
+</html>
